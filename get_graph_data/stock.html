@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.0.2"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-fd823bb3f3b355a08a80642087842cd0"}, "mark": "bar", "encoding": {"x": {"type": "nominal", "field": "a"}, "y": {"type": "quantitative", "field": "b"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json", "datasets": {"data-fd823bb3f3b355a08a80642087842cd0": [{"a": "\uc0bc\uc131\uc804\uc790", "b": 55900}, {"a": "SK\ud558\uc774\ub2c9\uc2a4", "b": 74500}, {"a": "\uc0bc\uc131\ubc14\uc774\uc624\ub85c\uc9c1\uc2a4", "b": 799000}, {"a": "NAVER", "b": 312500}, {"a": "LG\ud654\ud559", "b": 699000}, {"a": "\uc140\ud2b8\ub9ac\uc628", "b": 301000}, {"a": "\uc0bc\uc131\uc804\uc790\uc6b0", "b": 48650}, {"a": "\ud604\ub300\ucc28", "b": 156000}, {"a": "\uce74\uce74\uc624", "b": 370000}, {"a": "\uc0bc\uc131SDI", "b": 423500}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
